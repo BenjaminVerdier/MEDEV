@@ -15,7 +15,9 @@ public class PGMProject {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        PGM a = new PGM();
+        a.lecturePGM("lena.pgm");
+        a.ecriturePGM("lena2");
     }
     
 }

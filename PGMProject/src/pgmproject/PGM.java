@@ -6,7 +6,9 @@
 package pgmproject;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -127,7 +129,7 @@ public class PGM {
         try{
             String line;
             BufferedReader fichier = new BufferedReader(new FileReader(nomFichier));
-            String delimiteurs = " ";
+            String delimiteurs = " \t";
             if (!fichier.readLine().equals("P2")){
                 throw new WrongFileTypeException();
             }
@@ -160,6 +162,36 @@ public class PGM {
             e.printStackTrace();
         }
     }
-    
-
+    public void ecriturePGM(String nomFichier){        
+        try{
+            String fichier = nomFichier+".pgm";
+            String test = "";
+            
+            BufferedWriter file = new BufferedWriter(new FileWriter(fichier));
+            file.write("P2");
+            file.newLine();
+            file.write("#");
+            file.newLine();
+            file.write(largeur+" "+hauteur);
+            file.newLine();
+            file.write(maxNiveauGris);
+            file.newLine();
+            for(int i=0; i<niveauxGris.size(); i++){
+                test += " "+niveauxGris.get(i);
+                if(test.length()>70){
+                   file.newLine();
+                   test = "";
+                }
+                file.write(niveauxGris.get(i));
+            }
+        
+            if(file != null){
+                    file.flush();
+                    file.close();
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }        
+    }
 }
