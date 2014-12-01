@@ -118,7 +118,11 @@ public class PGM {
     public void setHauteur(int hauteur) {
         this.hauteur = hauteur;
     }
-    
+    /**
+     * Méthode permettant de charger une image au format PGM. Si le type de fichier
+     * est incorrect (cad si la première ligne n'est pas P2), une erreur s'affiche dans la console.
+     * @param nomFichier de type String : le nom du fichier à charger
+     */
     public void lecturePGM(String nomFichier){
         try{
             String line;
@@ -156,5 +160,6 @@ public class PGM {
             e.printStackTrace();
         }
     }
+    
 
 }
