@@ -6,7 +6,7 @@ package pgmproject;
 
 import java.util.LinkedList;
 /**
- *
+ * Histogramme d'une image PGM.
  * @author tlaurent
  */
 public class Histogramme {
@@ -30,6 +30,10 @@ public class Histogramme {
         }
     }
     
+    /**
+     * Renvoie le nombre maximal d'apparitions de niveau de gris dans l'histogramme.
+     * @return : Le maximum de l'attribut valeurs.
+     */
     public int getMaxValeurs(){
         int max = 0;
         for(int i : this.valeurs){
@@ -42,7 +46,7 @@ public class Histogramme {
     
     /**
      * Génération de l'histogramme en PGM
-     * @return Renvoie l'histogramme sous la forme d'un objet PGM que l'on pourra afficher.
+     * @return : Renvoie l'histogramme sous la forme d'un objet PGM que l'on pourra afficher.
      */
     public PGM affichage(){
         PGM img = new PGM(255, 1280, this.getMaxValeurs());

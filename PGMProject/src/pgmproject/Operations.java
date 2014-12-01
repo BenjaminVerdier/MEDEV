@@ -6,11 +6,17 @@ package pgmproject;
 
 import java.util.LinkedList;
 /**
- *
+ * Regroupe les fonctions de seuillage et de comparaison de deux images.
  * @author tlaurent
  */
 public final class Operations {
     
+    /**
+     * Réalise le seuillage d'une image.
+     * @param img de type PGM : L'image à seuiller.
+     * @param seuil de type int : Le seuil à respecter.
+     * @return : L'image après seuillage.
+     */
     public PGM seuillage(PGM img, int seuil){
         PGM result = new PGM(img);
         
@@ -28,6 +34,12 @@ public final class Operations {
         return result;
     }
     
+    /**
+     * Réalise la différence en valeur absolue entre deux images
+     * @param img1 de type PGM : La première image à comparer.
+     * @param img2 de type PGM : La secoonde image à comparer.
+     * @return : La différence entre les deux images.
+     */
     public PGM difference(PGM img1, PGM img2){
         try{
             if (img1.getHauteur() != img2.getHauteur() || img1.getLargeur() != img2.getLargeur()){

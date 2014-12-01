@@ -5,7 +5,7 @@
 package pgmproject;
 
 /**
- *
+ * Exception levée lorsque l'on essaie de comparer deux images de tailles différentes.
  * @author tlaurent
  */
 public class DifferentSizeException extends Exception {
