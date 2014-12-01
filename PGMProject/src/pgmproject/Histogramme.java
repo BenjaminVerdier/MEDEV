@@ -19,6 +19,14 @@ public class Histogramme {
     public Histogramme() {
         valeurs = new int[256];
     }
+    /**
+     * Constructeur pour tout niveau de gris maximum.
+     * @param img 
+     */
+    public Histogramme(PGM img) {
+        valeurs = new int[img.getMaxNiveauGris()+1];
+        this.analyse(img);
+    }
     
     /**
      * Analyse l'image PGM en paramètre pour obtenir les niveaux de gris.
@@ -49,11 +57,11 @@ public class Histogramme {
      * @return : Renvoie l'histogramme sous la forme d'un objet PGM que l'on pourra afficher.
      */
     public PGM affichage(){
-        PGM img = new PGM(255, 1280, this.getMaxValeurs());
+        PGM img = new PGM(255, valeurs.length*5, this.getMaxValeurs());
         LinkedList<Integer> list = new LinkedList<>();
         
         for(int i = this.getMaxValeurs(); i > 0; i--){
-            for (int j = 0; j < 256; j++){
+            for (int j = 0; j < valeurs.length; j++){
                 if (valeurs[j] >= i){
                     list.push(255);
                     list.push(255);
