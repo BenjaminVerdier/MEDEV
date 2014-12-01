@@ -5,16 +5,20 @@
  */
 package pgmproject;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 
 /**
  *
  * @author Fabien
  */
 public class PGM {
-    private final int maxNiveauGris; //Le maximum des niveaux de gris possible
-    private final int largeur; //Largeur de l'image
-    private final int hauteur; //Hauteur de l'image
+    private int maxNiveauGris; //Le maximum des niveaux de gris possible
+    private int largeur; //Largeur de l'image
+    private int hauteur; //Hauteur de l'image
     
     private List<Integer> niveauxGris; //Les niveaux de gris des pixels de l'image
     
@@ -39,9 +43,7 @@ public class PGM {
      * @param hauteur de type int : la hauteur de l'image
      */
     public PGM(int maxNivGris, int largeur, int hauteur){
-        maxNiveauGris = maxNivGris;
-        this.largeur=largeur;
-        this.hauteur=hauteur;
+        this(maxNivGris, largeur, hauteur, new ArrayList<Integer>());
     }
     
     /**
@@ -53,6 +55,12 @@ public class PGM {
         this.largeur=a.largeur;
         this.hauteur=a.hauteur;
         this.niveauxGris=a.niveauxGris;
+    }
+    /**
+     * Constructeur sans paramètres, uui initialise les attributs entiers à 0
+     */
+    public PGM(){
+        this(0, 0, 0);
     }
     /**
      * Getter sur l'attribut maxNiveauGris
@@ -89,6 +97,64 @@ public class PGM {
     public void setNiveauxGris(List<Integer> niveauxGris) {
         this.niveauxGris = niveauxGris;
     }
+    /**
+     * Setter pour l'attribut maxNiveauGris
+     * @param maxNiveauGris 
+     */
+    public void setMaxNiveauGris(int maxNiveauGris) {
+        this.maxNiveauGris = maxNiveauGris;
+    }
+    /**
+     * Setter pour l'attribut largeur
+     * @param largeur 
+     */
+    public void setLargeur(int largeur) {
+        this.largeur = largeur;
+    }
+    /**
+     * Setter pour l'attribut hauteur
+     * @param hauteur 
+     */
+    public void setHauteur(int hauteur) {
+        this.hauteur = hauteur;
+    }
     
-    
+    public void lecturePGM(String nomFichier){
+        try{
+            String line;
+            BufferedReader fichier = new BufferedReader(new FileReader(nomFichier));
+            String delimiteurs = " ";
+            if (!fichier.readLine().equals("P2")){
+                throw new WrongFileTypeException();
+            }
+            fichier.readLine();
+            line=fichier.readLine();
+            StringTokenizer tokenizer = new StringTokenizer(line, delimiteurs);
+            largeur = Integer.valueOf(tokenizer.nextToken());
+            hauteur = Integer.valueOf(tokenizer.nextToken());
+            line=fichier.readLine();
+            maxNiveauGris = Integer.valueOf(line);
+            while((line=fichier.readLine()) != null){
+                StringTokenizer tokenize = new StringTokenizer(line, delimiteurs);
+                while (tokenize.hasMoreTokens()){
+                    int a = Integer.valueOf(tokenize.nextToken());
+                    if(a<0){
+                        a=0;
+                    }
+                    else if(a>maxNiveauGris){
+                        a=maxNiveauGris;
+                    }
+                    niveauxGris.add(a);
+                }
+            }
+            fichier.close();
+        }
+        catch(WrongFileTypeException e){
+            System.out.println("Le format du fichier est incorrect");
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
 }
