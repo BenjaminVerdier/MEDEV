@@ -18,6 +18,8 @@ public class PGMProject {
         PGM a = new PGM();
         a.lecturePGM("lena.pgm");
         a.ecriturePGM("lena2");
+        //Operations.seuillage(a, 127).ecriturePGM("test_seuillage");
+        Operations.difference(a, Operations.seuillage(a, 127)).ecriturePGM("test_difference");
     }
     
 }
