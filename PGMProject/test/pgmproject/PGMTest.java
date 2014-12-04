@@ -48,15 +48,15 @@ public class PGMTest {
     /**
      * Test of ecriturePGM method, of class PGM.
      */
-    @Ignore
     @Test
     public void testEcriturePGM() {
         System.out.println("ecriturePGM");
-        String nomFichier = "";
-        PGM instance = new PGM();
-        instance.ecriturePGM(nomFichier);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        PGM a = new PGM();
+        a.lecturePGM("lena.pgm");
+        PGM b = new PGM();
+        a.ecriturePGM("lena2");
+        b.lecturePGM("lena2.pgm");
+        assertTrue(a.equals(b));
     }
     
 }
