@@ -174,7 +174,7 @@ public class PGM {
             file.newLine();
             file.write(largeur+" "+hauteur);
             file.newLine();
-            file.write(maxNiveauGris);
+            file.write(String.valueOf(maxNiveauGris));
             file.newLine();
             for(int i=0; i<niveauxGris.size(); i++){
                 test += " "+niveauxGris.get(i);
@@ -182,7 +182,7 @@ public class PGM {
                    file.newLine();
                    test = "";
                 }
-                file.write(niveauxGris.get(i));
+                file.write(String.valueOf(niveauxGris.get(i))+"\t");
             }
         
             if(file != null){
