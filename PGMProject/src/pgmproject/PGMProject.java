@@ -18,8 +18,10 @@ public class PGMProject {
         PGM a = new PGM();
         a.lecturePGM("lena.pgm");
         a.ecriturePGM("lena2");
+        //Histogramme hist = new Histogramme(a);
+        //hist.affichage().ecriturePGM("test_hist");
         //Operations.seuillage(a, 127).ecriturePGM("test_seuillage");
-        Operations.difference(a, Operations.seuillage(a, 127)).ecriturePGM("test_difference");
+        Operations.difference(a, a).ecriturePGM("test_difference");
     }
     
 }
