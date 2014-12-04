@@ -11,6 +11,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.StringTokenizer;
 
 /**
@@ -193,5 +194,26 @@ public class PGM {
         catch(Exception e){
             e.printStackTrace();
         }        
+    }
+    /**
+     * Méthode comparant un objet à l'instance courante de la classe PGM.
+     * @param a : l'objet à comparer à l'instance de la classe
+     * @return de type boolean, vrai si les deux objets sont les mêmes
+     */
+    @Override
+    public boolean equals(Object a){
+        if (!a.getClass().equals(this.getClass())){
+            return false;
+        }
+        if (((PGM)a).maxNiveauGris!=this.maxNiveauGris || ((PGM)a).hauteur!=this.hauteur ||
+              ((PGM)a).largeur!= this.largeur || ((PGM)a).niveauxGris.size()!= this.niveauxGris.size()){
+            return false;
+        }
+        for (int i=0; i<niveauxGris.size(); i++){
+            if (!Objects.equals(((PGM)a).niveauxGris.get(i), niveauxGris.get(i))){
+                return false;
+            }
+        }
+        return true;
     }
 }
