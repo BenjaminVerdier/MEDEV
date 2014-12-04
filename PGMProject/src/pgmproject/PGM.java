@@ -56,7 +56,7 @@ public class PGM {
         this.maxNiveauGris=a.maxNiveauGris;
         this.largeur=a.largeur;
         this.hauteur=a.hauteur;
-        this.niveauxGris=a.niveauxGris;
+        this.niveauxGris= new ArrayList(a.niveauxGris);
     }
     /**
      * Constructeur sans paramètres, uui initialise les attributs entiers à 0

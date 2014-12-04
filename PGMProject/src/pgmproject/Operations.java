@@ -21,7 +21,7 @@ public final class Operations {
         PGM result = new PGM(img);
         
         ArrayList<Integer> list;
-        list = (ArrayList<Integer>) img.getNiveauxGris();
+        list = new ArrayList((ArrayList<Integer>) img.getNiveauxGris());
         
         for (int i = 0; i < list.size(); i++){
             if (list.get(i) < seuil){
@@ -54,7 +54,6 @@ public final class Operations {
         
         for(int i =0; i< img1.getNiveauxGris().size(); i++){
             list.add(Math.abs(img1.getNiveauxGris().get(i) - img2.getNiveauxGris().get(i)));
-            System.out.println(img1.getNiveauxGris().get(i) - img2.getNiveauxGris().get(i));
         }
         
         return new PGM(img1.getMaxNiveauGris(),img1.getHauteur(),img1.getLargeur(),list);

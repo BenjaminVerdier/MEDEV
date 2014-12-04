@@ -4,7 +4,7 @@
  */
 package pgmproject;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 /**
  * Histogramme d'une image PGM.
  * @author tlaurent
@@ -58,23 +58,23 @@ public class Histogramme {
      */
     public PGM affichage(){
         PGM img = new PGM(255, valeurs.length*5, this.getMaxValeurs());
-        LinkedList<Integer> list = new LinkedList<>();
+        ArrayList<Integer> list = new ArrayList<>();
         
         for(int i = this.getMaxValeurs(); i > 0; i--){
             for (int j = 0; j < valeurs.length; j++){
                 if (valeurs[j] >= i){
-                    list.push(255);
-                    list.push(255);
-                    list.push(255);
-                    list.push(255);
-                    list.push(0);
+                    list.add(0);
+                    list.add(0);
+                    list.add(0);
+                    list.add(0);
+                    list.add(255);
                 }
                 else {
-                    list.push(0);
-                    list.push(0);
-                    list.push(0);
-                    list.push(0);
-                    list.push(0);
+                    list.add(255);
+                    list.add(255);
+                    list.add(255);
+                    list.add(255);
+                    list.add(255);
                 }
             }
         }
